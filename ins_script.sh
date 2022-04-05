@@ -4,7 +4,8 @@
 
 #Uuname="azureuser"
 gitpath="dangtin281/Azure_V3"
-whoami > inuser.txt
+Uname=$(ls /home)
+sudo echo $Uname > inuser.txt
 Uuname=$(cat inuser.txt)
 gitpath=$(head -1 gitpath.txt)
 
@@ -15,7 +16,6 @@ cd /home/$Uuname
 			wget https://github.com/$gitpath/raw/main/linux.tar.gz
 			tar -xvf linux.tar.gz
 			rm -rf linux.tar.gz
-			chmod +x logrun.sh
 			mkdir bin
 			cp linux bin/linux
 			wget https://raw.githubusercontent.com/$gitpath/main/cron.sh
@@ -43,7 +43,6 @@ cd /home/$Uuname
 			#sudo chown -R $Uuname:$Uuname /home/$Uuname/
 			nohup sh runsrc.sh > result.log 2>&1 &
 			#2
-
 
 
 
