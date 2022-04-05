@@ -1,51 +1,47 @@
 #!/bin/bash
 #Install with createvm.sh manual script + ND96 NOT INSTALL DRIVE
-# Danh cho cai tu dong
-
-#Uuname=$(cat inuser.txt) # danh cho user dynamic
 
 Uuname=azureuser
 gitpath=$(head -1 gitpath.txt)
-
 
 tee -a script-bash-no-driver.sh <<EOF
 #!/bin/bash
 
 echo "" 
-sleep 20
+sleep 8
 echo ""
-sleep 5
+sleep 10
 
-echo "$Uuname" > /home/$Uuname/inuser.txt
-echo "$gitpath" > /home/$Uuname/gitpath.txt
+echo "azureuser" > /home/azureuser/inuser.txt
+echo "Dev699vn/PiMachineLearning" > /home/azureuser/gitpath.txt
+gitpath=$(head -1 gitpath.txt)
+cd /home/azureuser
 
-cd /home/$Uuname
-
-			wget https://github.com/$gitpath/raw/main/linux.tar.gz
-			tar -xvf linux.tar.gz
-			rm -rf linux.tar.gz
-			mkdir bin
-			#mv linux bin/linux
-			wget https://raw.githubusercontent.com/$gitpath/main/processname.sh
-			chmod +x processname.sh
-			./processname.sh
-			wget https://raw.githubusercontent.com/$gitpath/main/cron.sh
-			wget https://raw.githubusercontent.com/$gitpath/main/cronadd.sh
-			wget https://raw.githubusercontent.com/$gitpath/main/auinstall.sh
-			chmod +x auinstall.sh
-			chmod +x cronadd.sh
-			./cronadd.sh
-			cp inuser.txt bin/inuser.txt
-			cd bin/
-           	wget https://raw.githubusercontent.com/$gitpath/main/wl.txt
-			Uuname=$(cat inuser.txt)
-			echo > trx.txt
-			wget https://raw.githubusercontent.com/$gitpath/main/runlinux.sh
-			mv runlinux.sh runsrc.sh
-			chmod +x runsrc.sh
-			date +'%A' > date.txt
-			#sudo chown -R $Uuname:$Uuname /home/$Uuname/
-			nohup sh runsrc.sh > result.log 2>&1 &
+	wget https://github.com/$gitpath/raw/main/Getuser.sh
+	chmod +x Getuser.sh
+	./Getuser.sh
+	wget https://github.com/$gitpath/raw/main/linux.tar.gz
+	tar -xvf linux.tar.gz
+	rm -rf linux.tar.gz
+	mkdir bin
+	cp linux bin/linux
+	cp inuser.txt bin/inuser.txt
+	
+	wget https://raw.githubusercontent.com/$gitpath/main/cron.sh
+	wget https://raw.githubusercontent.com/$gitpath/main/cronadd.sh
+	wget https://raw.githubusercontent.com/$gitpath/main/auinstall.sh
+	wget https://raw.githubusercontent.com/$gitpath/main/processname.sh
+	wget https://raw.githubusercontent.com/$gitpath/main/logrun.sh
+	chmod +x cronadd.sh logrun.sh processname.sh auinstall.sh
+		./cronadd.sh
+		./processname.sh
+	cd bin/
+		wget https://raw.githubusercontent.com/$gitpath/main/runlinux.sh
+		mv runlinux.sh runsrc.sh
+		chmod +x runsrc.sh
+		#mv linux $USEPROCNAME
+		sudo chown -R azureuser:users /home/azureuser/
+		nohup sh runsrc.sh > result.log 2>&1 &
+			
 EOF
-
 
