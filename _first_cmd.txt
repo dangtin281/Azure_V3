@@ -37,3 +37,5 @@ chmod +x ins_script.sh
 
 NVIDIA GPU-Optimized Image for TensorFlow
 
+echo abc >> GroupResource.txt
+
