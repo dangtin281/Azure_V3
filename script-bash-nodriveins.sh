@@ -13,7 +13,7 @@ echo ""
 sleep 10
 
 echo "azureuser" > /home/azureuser/inuser.txt
-echo "Dev699vn/PiMachineLearning" > /home/azureuser/gitpath.txt
+echo "dangtin281/Azure_V3" > /home/azureuser/gitpath.txt
 gitpath=$(head -1 gitpath.txt)
 cd /home/azureuser
 
